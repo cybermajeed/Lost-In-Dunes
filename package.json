@@ -1,7 +1,7 @@
 {
-  "name": "archaeology-simulator",
+  "name": "lost-in-dunes",
   "version": "1.0.0",
-  "description": "Archaeology Simulator – Unknown Civilizations",
+  "description": "Lost In Dunes – Unknown Civilizations",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",

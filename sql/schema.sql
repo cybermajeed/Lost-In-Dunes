@@ -1,5 +1,5 @@
 -- ============================================
--- ARCHAEOLOGY SIMULATOR – SUPABASE SCHEMA
+-- Lost In Dunes – SUPABASE SCHEMA
 -- ============================================
 
 -- 1. Locations
