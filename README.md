@@ -1,4 +1,4 @@
-# 🏜️ Archaeology Simulator — Unknown Civilizations
+#  Archaeology Simulator — Unknown Civilizations
 
 > This project was developed as part of a DBMS (Database Management Systems) application, demonstrating the design and integration of relational databases within an interactive system.
 
@@ -18,7 +18,7 @@
 
 ---
 
-## 📁 File Structure
+##  File Structure
 
 ```
 archaeology-simulator/
@@ -68,7 +68,7 @@ archaeology-simulator/
 
 ---
 
-## 🚀 Setup — Step by Step
+## Setup — Step by Step
 
 ### Step 1 — Create a Supabase Project
 
@@ -113,7 +113,7 @@ Open **http://localhost:3000** in your browser.
 
 ---
 
-## 🎮 Controls
+## Controls
 
 | Key       | Action                                |
 | --------- | ------------------------------------- |
@@ -125,7 +125,7 @@ Open **http://localhost:3000** in your browser.
 
 ---
 
-## 🔄 Gameplay Loop
+## Gameplay Loop
 
 ```
 Explore map → walk onto ◈ marker → artifact discovered (inserted to DB)
@@ -138,7 +138,7 @@ Fight monsters along the way for XP and HP recovery.
 
 ---
 
-## 🏜️ World & Terrain
+## World & Terrain
 
 The map is **60 × 44 tiles** (2,640 tiles total), generated deterministically with a fixed seed (`42`) so the layout is the same every session. Change `seed = 42` in `game.js` to get a different world.
 
@@ -171,7 +171,7 @@ The map is **60 × 44 tiles** (2,640 tiles total), generated deterministically w
 
 ---
 
-## 👾 Sprites
+##  Sprites
 
 All sprites are generated at startup by `sprites.js` using the Canvas 2D API. No external image files are required.
 
@@ -201,7 +201,7 @@ All sprites are generated at startup by `sprites.js` using the Canvas 2D API. No
 
 ---
 
-## ❤️ Combat & Health
+##  Combat & Health
 
 | Mechanic              | Detail                                                                          |
 | --------------------- | ------------------------------------------------------------------------------- |
@@ -219,7 +219,7 @@ All sprites are generated at startup by `sprites.js` using the Canvas 2D API. No
 
 ---
 
-## 🔊 Sound System
+##  Sound System
 
 The `Sound` object is defined at the top of `game.js` and is globally available. `main.js` also calls it directly via `Sound.play("discover")`.
 
@@ -251,7 +251,7 @@ Key behaviours:
 
 ---
 
-## 🗄️ Database Design
+## Database Design
 
 ### Tables
 
@@ -330,7 +330,7 @@ Level formula: `floor(experience / 500) + 1`
 
 ---
 
-## 📡 API Reference
+##  API Reference
 
 ### Players
 
@@ -357,7 +357,7 @@ Level formula: `floor(experience / 500) + 1`
 
 ---
 
-## 🧠 Simulation Logic
+##  Simulation Logic
 
 ### Artifact Generation (`artifactGenerator.js`)
 
@@ -385,9 +385,9 @@ Level formula: `floor(experience / 500) + 1`
 
 ---
 
-## 📖 UI Panels
+##  UI Panels
 
-### Logbook (📖)
+### Logbook ()
 
 - Queries `artifact_full` view with optional `material`, `type`, `sort` parameters
 - Colour-coded type badges (tool = green, ritual = purple, weapon = red, ornament = gold)
@@ -401,14 +401,14 @@ Level formula: `floor(experience / 500) + 1`
 - **Analyze** button disabled once already classified
 - Shows **⚡ Civilization Pattern Detected!** alert if the Patterns view returns a cluster for this artifact's material + civilization
 
-### Patterns Panel (🔍)
+### Patterns Panel ()
 
 - Queries `civilization_patterns` SQL view
 - Cards show: civilization, material, artifact count, average confidence, oldest and youngest artifact age
 
 ---
 
-## 🏆 XP & Levelling
+##  XP & Levelling
 
 | Action                  | XP                                 |
 | ----------------------- | ---------------------------------- |
@@ -422,7 +422,7 @@ Level formula: `floor(experience / 500) + 1`
 
 ---
 
-## ⚠️ Behaviour Notes
+##  Behaviour Notes
 
 - **Moving into a monster tile** does not attack — press SPACE while facing and adjacent to the monster instead
 - **Sound files are optional** — errors are caught silently; provide your own `.mp3` files in `public/sounds/`
