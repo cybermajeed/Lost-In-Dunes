@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Archaeology Simulator – Unknown Civilizations</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- LOGIN SCREEN -->
+    <div id="login-screen" class="screen active">
+      <div class="login-card">
+        <div class="login-logo">⛏</div>
+        <h1 class="login-title">ARCHAEOLOGY<br /><span>SIMULATOR</span></h1>
+        <p class="login-sub">Unknown Civilizations — Field Season IV</p>
+        <div class="login-form">
+          <input
+            type="text"
+            id="player-name-input"
+            placeholder="Enter your name, Archaeologist"
+            maxlength="30"
+          />
+          <button id="start-btn" class="btn-primary">Begin Expedition</button>
+        </div>
+        <p class="login-hint">
+          Your progress will be saved to the expedition database.
+        </p>
+      </div>
+      <div class="desert-deco"></div>
+    </div>
+
+    <!-- MAIN GAME SCREEN -->
+    <div id="game-screen" class="screen">
+      <div class="hud">
+        <div class="hud-player">
+          <span class="hud-name" id="hud-name">—</span>
+          <span class="hud-level">LVL <span id="hud-level">1</span></span>
+          <div class="xp-bar-wrap"><div class="xp-bar" id="xp-bar"></div></div>
+          <span class="hud-hp-label" id="hud-hp">❤ 100/100</span>
+          <div class="hp-bar-wrap"><div class="hp-bar" id="hp-bar"></div></div>
+        </div>
+        <div class="hud-center">
+          <span id="hud-location">—</span>
+        </div>
+        <div class="hud-actions">
+          <button class="btn-hud" id="logbook-btn">📖 Logbook</button>
+          <button class="btn-hud" id="patterns-btn">🔍 Patterns</button>
+        </div>
+      </div>
+
+      <div class="game-wrap">
+        <canvas id="game-canvas"></canvas>
+      </div>
+
+      <!-- Sidebar notification -->
+      <div id="discovery-toast" class="toast hidden"></div>
+    </div>
+
+    <!-- ARTIFACT MODAL -->
+    <div id="artifact-modal" class="modal hidden">
+      <div class="modal-box">
+        <button class="modal-close" id="artifact-modal-close">✕</button>
+        <div class="modal-header">
+          <span class="modal-icon">🏺</span>
+          <div>
+            <div class="modal-code" id="modal-code">—</div>
+            <div class="modal-subtitle" id="modal-location">—</div>
+          </div>
+        </div>
+        <div class="modal-grid">
+          <div class="modal-field">
+            <label>Material</label><span id="modal-material">—</span>
+          </div>
+          <div class="modal-field">
+            <label>Estimated Age</label><span id="modal-age">—</span>
+          </div>
+          <div class="modal-field">
+            <label>Condition</label><span id="modal-condition">—</span>
+          </div>
+          <div class="modal-field">
+            <label>Status</label><span id="modal-status">—</span>
+          </div>
+        </div>
+        <div id="classification-section" class="modal-section hidden">
+          <h3>Classification</h3>
+          <div class="modal-grid">
+            <div class="modal-field">
+              <label>Type</label><span id="modal-type">—</span>
+            </div>
+            <div class="modal-field">
+              <label>Civilization</label><span id="modal-civ">—</span>
+            </div>
+            <div class="modal-field">
+              <label>Confidence</label><span id="modal-confidence">—</span>
+            </div>
+          </div>
+          <div class="modal-theory" id="modal-theory">—</div>
+          <div id="pattern-alert" class="pattern-alert hidden">
+            ⚡ Civilization Pattern Detected!
+          </div>
+        </div>
+        <button class="btn-primary" id="analyze-btn">Analyze Artifact</button>
+        <div class="analyze-spinner hidden" id="analyze-spinner">
+          Analyzing…
+        </div>
+      </div>
+    </div>
+
+    <!-- LOGBOOK MODAL -->
+    <div id="logbook-modal" class="modal hidden">
+      <div class="modal-box modal-wide">
+        <button class="modal-close" id="logbook-modal-close">✕</button>
+        <h2 class="modal-title">📖 Field Logbook</h2>
+
+        <div class="logbook-filters">
+          <select id="filter-material">
+            <option value="">All Materials</option>
+            <option>obsidian</option>
+            <option>bronze</option>
+            <option>clay</option>
+            <option>bone</option>
+            <option>sandstone</option>
+            <option>gold</option>
+            <option>ivory</option>
+            <option>copper</option>
+          </select>
+          <select id="filter-type">
+            <option value="">All Types</option>
+            <option>tool</option>
+            <option>ritual</option>
+            <option>weapon</option>
+            <option>ornament</option>
+            <option>unknown</option>
+          </select>
+          <select id="sort-by">
+            <option value="age">Sort: Oldest</option>
+            <option value="confidence">Sort: Confidence</option>
+            <option value="">Sort: Recent</option>
+          </select>
+          <button class="btn-secondary" id="apply-filters">Filter</button>
+        </div>
+
+        <div class="logbook-table-wrap">
+          <table class="logbook-table">
+            <thead>
+              <tr>
+                <th>Code</th>
+                <th>Material</th>
+                <th>Age (yrs)</th>
+                <th>Condition</th>
+                <th>Location</th>
+                <th>Type</th>
+                <th>Civ</th>
+                <th>Conf%</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="logbook-tbody">
+              <tr>
+                <td colspan="9" class="empty-state">Loading records…</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- PATTERNS MODAL -->
+    <div id="patterns-modal" class="modal hidden">
+      <div class="modal-box">
+        <button class="modal-close" id="patterns-modal-close">✕</button>
+        <h2 class="modal-title">🔍 Civilization Patterns</h2>
+        <p class="modal-desc">
+          Groups of 2+ artifacts sharing material + civilization, suggesting
+          cultural identity.
+        </p>
+        <div id="patterns-list" class="patterns-list">
+          <p class="empty-state">
+            No patterns detected yet. Analyze more artifacts.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/sprites.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
