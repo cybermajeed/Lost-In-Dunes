@@ -18,7 +18,7 @@
 
 ---
 
-##  File Structure
+## File Structure
 
 ```
 lost-in-dunes/
@@ -171,7 +171,7 @@ The map is **60 × 44 tiles** (2,640 tiles total), generated deterministically w
 
 ---
 
-##  Sprites
+## Sprites
 
 All sprites are generated at startup by `sprites.js` using the Canvas 2D API. No external image files are required.
 
@@ -201,7 +201,7 @@ All sprites are generated at startup by `sprites.js` using the Canvas 2D API. No
 
 ---
 
-##  Combat & Health
+## Combat & Health
 
 | Mechanic              | Detail                                                                          |
 | --------------------- | ------------------------------------------------------------------------------- |
@@ -219,7 +219,7 @@ All sprites are generated at startup by `sprites.js` using the Canvas 2D API. No
 
 ---
 
-##  Sound System
+## Sound System
 
 The `Sound` object is defined at the top of `game.js` and is globally available. `main.js` also calls it directly via `Sound.play("discover")`.
 
@@ -330,7 +330,7 @@ Level formula: `floor(experience / 500) + 1`
 
 ---
 
-##  API Reference
+## API Reference
 
 ### Players
 
@@ -357,7 +357,7 @@ Level formula: `floor(experience / 500) + 1`
 
 ---
 
-##  Simulation Logic
+## Simulation Logic
 
 ### Artifact Generation (`artifactGenerator.js`)
 
@@ -385,7 +385,7 @@ Level formula: `floor(experience / 500) + 1`
 
 ---
 
-##  UI Panels
+## UI Panels
 
 ### Logbook ()
 
@@ -408,7 +408,7 @@ Level formula: `floor(experience / 500) + 1`
 
 ---
 
-##  XP & Levelling
+## XP & Levelling
 
 | Action                  | XP                                 |
 | ----------------------- | ---------------------------------- |
@@ -422,7 +422,7 @@ Level formula: `floor(experience / 500) + 1`
 
 ---
 
-##  Behaviour Notes
+## Behaviour Notes
 
 - **Moving into a monster tile** does not attack — press SPACE while facing and adjacent to the monster instead
 - **Sound files are optional** — errors are caught silently; provide your own `.mp3` files in `public/sounds/`

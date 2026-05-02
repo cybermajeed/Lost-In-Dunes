@@ -18,7 +18,7 @@ const Sprites = (() => {
   }
 
   // ─────────────────────────────────────────────
-  // PLAYER — Girl archaeologist, 4-direction walk
+  // PLAYER — Archaeologist, 4-direction walk
   // Each frame: 48x48, 4 frames per direction
   // Directions: down(0), left(1), right(2), up(3)
   // ─────────────────────────────────────────────
