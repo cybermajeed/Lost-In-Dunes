@@ -1,4 +1,4 @@
-#  Archaeology Simulator — Unknown Civilizations
+# Lost In Dunes — Unknown Civilizations
 
 > This project was developed as part of a DBMS (Database Management Systems) application, demonstrating the design and integration of relational databases within an interactive system.
 
@@ -21,7 +21,7 @@
 ##  File Structure
 
 ```
-archaeology-simulator/
+lost-in-dunes/
 │
 ├── public/                          # Frontend — served statically by Express
 │   ├── index.html                   # Single-page app shell (login + game screens, all modals)
