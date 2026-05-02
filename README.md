@@ -1,6 +1,10 @@
 # 🏜️ Archaeology Simulator — Unknown Civilizations
 
-> A full-stack 2D exploration game demonstrating relational SQL (Supabase) as the backbone of a living simulation — not just a CRUD app.
+> This project was developed as part of a DBMS (Database Management Systems) application, demonstrating the design and integration of relational databases within an interactive system.
+
+> It is a full-stack 2D archaeology exploration game where players discover artifacts from unknown civilizations. The application uses Supabase to manage relational data including players, locations, artifacts, classifications, and hypotheses, showcasing concepts like joins, constraints, and pattern analysis through SQL views.
+
+> Built with a custom canvas-based game engine and a Node.js backend, the system combines procedural world generation with database-driven discovery and analysis. Players explore desert environments, uncover relics, classify findings, and identify hidden civilization patterns, all while progressing through an experience-based system.
 
 ---
 
